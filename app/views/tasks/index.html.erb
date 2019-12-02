@@ -1,0 +1,29 @@
+<h1>Задачи</h1>
+
+<button class="button_plus">
+<img src="https://cs.pikabu.ru/images/big_size_comm/2013-01_3/13580079146771.jpg" style="width:100x;height:25px" align="left"%>
+</button>
+<% prev=0  %>
+<% @tasks.each do |i| %>
+	<% if i.project_id != prev %>
+		<h2><%= Project.joins(:todos).find(i.project_id).title %></h2>
+		<li><%= i.text %></li>
+	<% else %>
+		<li><%= i.text %></li>
+	<% end  %>
+	<% prev = i.project_id %>
+	<br>
+<% end %>
+<!--<p><%= button_to('+', class: 'but') %></p>-->
+<div class = "block">
+<h2>Новая задача</h2>
+<%= form_for :task, url: root_path, :html => {:class => 'form_ok'} do |f| %>
+	<p><%= f.text_field :text, placeholder: 'Название задачи' %></p>
+	<p><%= f.check_box :isCompleted %></p>
+	<p><%= f.select :project_id, Project.all.map {|p| [ p.title, p.id ] }, {}, :onchange => "f();" %><%=  %>
+	<lable id='onchange_label'></lable></p>
+	<p><%= link_to 'OK', root_path, :class => 'my_button_link_ok' %>
+	<%= link_to 'Cancel', root_path, :class => 'my_button_link_cancel' %> </p>
+<% end %>
+</div>
+<%= %>

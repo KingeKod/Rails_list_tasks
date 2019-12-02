@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notes</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+	<style>
+		.button_plus {
+		background: white; /* Синий цвет фона */ 
+		color: white; /* Белые буквы */ 
+		}
+	</style>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
